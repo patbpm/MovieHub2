@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}{{person.name}}{% endblock %}
+{% block content %}
+    <div>
+        <button type="submit"><a href={% url 'homepage'%}>Home Page</a></button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>{{person.name}}</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-2">
+                <img src="{{ base_url }}{{ profile_sizes }}{{ person.profile_path }}" class="card-img" alt="Person Pictures">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="card-title"><h5 >Persomal information</h5>  </div>
+                        <hr>
+                        <p class="card-text"><strong>Website:</strong>  <a href="">{{ person.homepage }}</a></p>
+                        <p class="card-text">Birthday: {{ person.birthday }}</p>
+                        <p class="card-text">Deathday: {{ person.deathday }}</p>
+                        <p class="card-text">Place of birth: {{ person.place_of_birth }}</p>
+                        <p class="card-text">popularity: {{ person.popularity }}</p>
+                       
+                                           
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                BIOGRAPHY
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ person.biography|linebreaksbr }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                MOVIES CREDITS
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for movie_credit in movie_credits  %}                    
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'movie_detail' pk=movie_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ movie_credit.poster_path }}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <p class="card-text"><a href="{% url 'movie_detail' pk=movie_credit.id %}">{{ movie_credit.original_title }}</a> ({{ movie_credit.character }})</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                PRODUCTION COMPANY
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

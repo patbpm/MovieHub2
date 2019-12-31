@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}{{season.name}}{% endblock %}
+{% block content %}
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>{{season.name}}</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-2">
+                <img src="{{ base_url }}{{ sizes }}{{ season.poster_path }}" class="card-img" alt="Person Pictures">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="card-title"><h5 >Season info</h5>  </div>
+                        <hr>
+                        <p class="card-text">Air date: {{ season.air_date }}</p>
+                        <p class="card-text">{{ season.overview|linebreaksbr }}</p>
+                        
+                       
+                                           
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        
+        <div class="card">
+            <div class="card-header">
+                SEASON CREDITS
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for season_credit in season_credits  %}                    
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'person_detail' pk=season_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ season_credit.profile_path }}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <p class="card-text"><a href="{% url 'person_detail' pk=season_credit.id %}">{{ season_credit.name }}</a> ({{ season_credit.character }})</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                EPISODES LIST
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for episode in season.episodes  %}                 
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href=""><img src="{{ base_url }}{{ still_sizes }}{{ episode.still_path }}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <p class="card-text">Episode {{ episode.episode_number }}<a href="">({{ episode.name }})</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                PRODUCTION COMPANY
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

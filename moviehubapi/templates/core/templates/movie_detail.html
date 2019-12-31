@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+    <div>
+        <button type="submit"><a href={% url 'homepage'%}>Home Page</a></button>
+    </div>
+    <div class="bg-light " style="background-image: url({{ base_url }}{{ backdrop_sizes }}{{ movie.backdrop_path }});">
+        <div class="container">
+            <div class="card bg-transparent">
+                <div class="card-header ">
+                    <h1 class="text-white text-center"><Strong>{{title}}</Strong></h1>
+                </div>
+            </div>
+            <hr>
+            <div class="card mb-3 bg-transparent">
+                <div class="row no-gutters ">
+                    <div class="col-md-2">
+                    <img src="{{ base_url }}{{ sizes }}{{ rel_path }}" class="card-img" alt="Movie Pictures">
+                    </div>
+                    <div class="col-md-8 " ;">
+                        <div class="card-body  text-white" >
+                            <div class="card-title"><h5 >Movie Info - {{ movie.runtime}} min - {{movie.release_date}}</h5>  </div>
+                            <hr>
+                            <p class="card-text"><strong>Website:</strong>  <a href="">{{homepage}}</a></p>
+                            <p class="card-text">Budget: {{ movie.budget}}</p>
+                            <p class="card-text">Revenue: {{ movie.revenue}}</p>
+                            <p class="card-text">Popularity: {{ movie.popularity}}</p>
+                            <p class="card-text">Genres:                        
+                                {% for genre in genres  %}
+                                    {{ genre.name }},
+                                {% endfor %}
+                            </p>
+                        
+                                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+        
+        <div class="card">
+            <div class="card-header">
+                OVERVIEW
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ overview|linebreaksbr }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                CAST
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for credit in credits  %}
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'person_detail' pk=credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ credit.profile_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <div class="card-body">
+                                <a href="{% url 'person_detail' pk=credit.id %}"><p class="card-text">{{ credit.name }}</p></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                PRODUCTION COMPANY
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {% for production_companie in production_companies  %}
+                        <p >{{ production_companie.name }}</p>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

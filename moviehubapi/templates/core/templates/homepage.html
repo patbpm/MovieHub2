@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<div class="container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner">
+            {% for trending in trendings  %}
+            {% if forloop.first %}
+            <div class="carousel-item active" data-interval="2000">
+            {% else %}
+            <div class="carousel-item">
+            {% endif %}
+                <a href="{% url 'movie_detail' pk=trending.id %}"><img src="{{ base_url }}{{ backdrop_sizes }}{{ trending.backdrop_path }}" class="d-block w-100 h-60" alt="..."></a>
+                <div class="carousel-caption d-none d-md-block" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%,rgba(255, 255, 255, 0.6) 100%);">
+                        {% if trending.title %}<h4>{{trending.title}}({{trending.media_type|capfirst}})</h4>{% else %}<h4>{{trending.name}}({{trending.media_type|upper}} Serie)</h4>{% endif %}
+                    <p>{{trending.overview}}</p>
+                    <a href="{% url 'movie_detail' pk=trending.id %}"><button type="button" class="btn btn-outline-success">More Info</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <ol class="carousel-indicators">
+            {% for i in trendings %}
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{ i }}" class="{% if forloop.first %} active {% endif %}"></li>
+            {% endfor %}
+            
+        </ol>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        
+    </div>
+    <div class="jumbotron">
+        <p>This information {{ is_cached|yesno:"was,wasn't" }} cached.</p>
+        <div class="card">
+            <div class="card-header">
+               GENRES
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for genre_movie in genre_movies  %}
+                    <div class="col-sm-2">
+                        <a href=""><p>{{genre_movie.name}}</p></a>
+                    </div>
+                    
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="card">
+        <h5 class="card-header"><a href={% url 'mostrated'%}>MOST RATED MOVIES</a></h5>
+        <div class="card-body">
+            <div class="row">
+                {% for rated_movie in rated_movies|slice:":6" %}
+                <div class="col-sm-2">
+                    <div class="card" style="width: 10rem;">
+                        <a href="{% url 'movie_detail' pk=rated_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ rated_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                        <div class="card-body">
+                            <a href="{% url 'movie_detail' pk=rated_movie.id %}"><p class="card-text text-center">{{ rated_movie.title }}({{ rated_movie.release_date}})</p></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href={% url 'mostrated'%} class="btn btn-primary text-center" >See All</a>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header"><a href={% url 'mostpopular'%}>MOST POPULAR MOVIES</a></h5>
+        <div class="card-body">
+            <div class="row">
+                {% for popular_movie in popular_movies|slice:":6" %}
+                <div class="col-sm-2">
+                    <div class="card" style="width: 10rem;">
+                        <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                        <div class="card-body">
+                            <a href="{% url 'movie_detail' pk=popular_movie.id %}"><p class="card-text text-center">{{ popular_movie.title }}({{ popular_movie.release_date}})</p></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href={% url 'mostpopular'%} class="btn btn-primary">See All</a>
+        </div>
+    </div>
+            
+</div>
+    
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}{{episode.name}}{% endblock %}
+{% block content %}
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>{{episode.name}}</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-2 ">
+                <img src="{{ base_url }}{{ still_sizes  }}{{ episode.still_path }}" class="card-img d-block  h-100" alt="Person Pictures">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="card-title"><h5 >Episode info</h5>  </div>
+                        <hr>
+                        <p class="card-text">Air date: {{ episode.air_date }}</p>
+                        <p class="card-text">{{ episode.overview|linebreaksbr }}</p>
+                        
+                        
+                       
+                                           
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                EPISODE CREDITS
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for episode_credit in episode_credits  %}                    
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'person_detail' pk=episode_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ episode_credit.profile_path }}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <p class="card-text"><a href="{% url 'person_detail' pk=episode_credit.id %}">{{ episode_credit.name }}</a> ({{ episode_credit.character }})</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                GUEST STARS
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for guest in episode.guest_stars  %}                    
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'person_detail' pk=guest.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ guest.profile_path }}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <p class="card-text"><a href="{% url 'person_detail' pk=guest.id %}">{{ guest.name }}</a> ({{ guest.character }})</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                IMAGES
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for image in episode_image  %}                    
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href=""><img src="{{ base_url }}{{ still_sizes }}{{ image.file_path }}" class="card-img-top" alt="..."></a>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                PRODUCTION COMPANY
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

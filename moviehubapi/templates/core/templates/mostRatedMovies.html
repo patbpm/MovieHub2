@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <button type="submit"><a href={% url 'homepage'%}>Home Page</a></button>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                MOST RATED MOVIE
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for discover_data in discover_datas %}
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'movie_detail' pk=discover_data.id %}"><img src="{{ base_url }}{{ sizes }}{{ discover_data.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <div class="card-body">
+                                <a href="{% url 'movie_detail' pk=discover_data.id %}"><p class="card-text text-center">{{ discover_data.title }}({{ discover_data.release_date }})</p></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+    {% endblock %}

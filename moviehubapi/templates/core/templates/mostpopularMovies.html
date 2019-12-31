@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <button type="submit"><a href={% url 'homepage'%}>Home Page</a></button>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                MOST POPULAR MOVIE
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for popular_movie in popular_movies %}
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 10rem;">
+                            <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <div class="card-body">
+                                <a href="{% url 'movie_detail' pk=popular_movie.id %}"><p class="card-text text-center">{{ popular_movie.title }}({{ popular_movie.release_date }})</p></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+    {% endblock %}
