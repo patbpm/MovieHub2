@@ -1,0 +1,1 @@
+web: gunicorn moviehubapi.wsgi --log-file -
