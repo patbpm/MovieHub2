@@ -1,30 +1,88 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <button type="submit"><a href={% url 'homepage'%}>Home Page</a></button>
-    </div>
+
     
     <div class="container">
-        <div class="card">
-            <div class="card-header">
-                MOST POPULAR MOVIE
+        
+
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    MOST POPULAR MOVIE
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="row">
+                        {% for popular_movie in popular_movies %}
+                        <div class="col-sm-2">
+                            <div class="card" style="width: 10rem;">
+                                <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <div class="card-body">
+                                    <a href="{% url 'movie_detail' pk=popular_movie.id %}"><p class="card-text text-center">{{ popular_movie.title }}({{ popular_movie.release_date }})</p></a>
+                                </div>
+                            </div> 
+                        </div>   
+                        {% endfor %}
+                    </div>
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    {% for popular_movie in popular_movies %}
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    MOST POPULAR TV SERIES
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="row">
+                        {% for popular_serie in popular_series %}
+                        <div class="col-sm-2">
+                            <div class="card" style="width: 10rem;">
+                                <a href="{% url 'tvserie_detail' pk=popular_serie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_serie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <div class="card-body">
+                                    <a href="{% url 'tvserie_detail' pk=popular_serie.id %}"><p class="card-text text-center">{{ popular_serie.name }}({{ popular_serie.first_air_date }})</p></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    MOST POPULAR MOVIE/TV PERSONS
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  <div class="row">
+                    {% for popular_person in popular_persons %}
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <a href="{% url 'person_detail' pk=popular_person.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_person.profile_path }}" class="card-img-top" alt="Actor Picture"></a>
                             <div class="card-body">
-                                <a href="{% url 'movie_detail' pk=popular_movie.id %}"><p class="card-text text-center">{{ popular_movie.title }}({{ popular_movie.release_date }})</p></a>
+                                <a href="{% url 'person_detail' pk=popular_person.id %}"><p class="card-text text-center">{{ popular_person.name }}</p></a>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-                
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
         
     </div>
 

@@ -43,18 +43,39 @@ def homepage(request):
     
     return render(request, 'core/templates/homepage.html', context)
 
+def genderlist(request):
+    
+    KEY = settings.MOVIEDB_API_KEY
+    POPULAR_MOVIES = 'https://api.themoviedb.org/3/movie/popular?api_key={key}'
+    CONFIG_PATTERN = 'http://api.themoviedb.org/3/configuration?api_key={key}'
+    r = requests.get(POPULAR_MOVIES.format(key=KEY))
+    gender_datas = r.json()
+    t = requests.get(CONFIG_PATTERN.format(key=KEY))
+    config = t.json()
+    
+    context = {
+        'gender': discover_datas['results'],
+        'base_url': config['images']['base_url'],
+        'sizes' : config['images']['poster_sizes'][2],
+    }
+    return render(request, 'core/templates/mostRatedMovies.html', context)
+
 def mostrated(request):
     
     KEY = settings.MOVIEDB_API_KEY
     DISCOVER_PATTERN = 'https://api.themoviedb.org/3/movie/top_rated?api_key={key}&language=en-US'
+    RATED_TV = 'https://api.themoviedb.org/3/tv/top_rated?api_key={key}'
     CONFIG_PATTERN = 'http://api.themoviedb.org/3/configuration?api_key={key}'
     r = requests.get(DISCOVER_PATTERN.format(key=KEY))
+    tv = requests.get(RATED_TV.format(key=KEY))
     discover_datas = r.json()
+    serie_datas = tv.json()
     t = requests.get(CONFIG_PATTERN.format(key=KEY))
     config = t.json()
     
     context = {
         'discover_datas': discover_datas['results'],
+        'serie_datas': serie_datas['results'],
         'base_url': config['images']['base_url'],
         'sizes' : config['images']['poster_sizes'][2],
     }
@@ -64,18 +85,28 @@ def mostpopular(request):
     
     KEY = settings.MOVIEDB_API_KEY
     POPULAR_MOVIES = 'https://api.themoviedb.org/3/movie/popular?api_key={key}'
+    POPULAR_TV = 'https://api.themoviedb.org/3/tv/popular?api_key={key}'
+    POPULAR_PERSON = 'https://api.themoviedb.org/3/person/popular?api_key={key}'
     CONFIG_PATTERN = 'http://api.themoviedb.org/3/configuration?api_key={key}'
     r = requests.get(POPULAR_MOVIES.format(key=KEY))
+    s = requests.get(POPULAR_TV.format(key=KEY))
+    p = requests.get(POPULAR_PERSON.format(key=KEY))
     popular_movies = r.json()
+    popular_series = s.json()
+    popular_persons = p.json()
     t = requests.get(CONFIG_PATTERN.format(key=KEY))
     config = t.json()
     
     context = {
         'popular_movies': popular_movies['results'],
+        'popular_series': popular_series['results'],
+        'popular_persons': popular_persons['results'],
         'base_url': config['images']['base_url'],
         'sizes' : config['images']['poster_sizes'][2],
     }
     return render(request, 'core/templates/mostpopularMovies.html', context)
+
+
 
 def movie_detail(request, pk):
     
