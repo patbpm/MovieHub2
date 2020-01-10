@@ -12,7 +12,7 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-2 ">
-                <img src="{{ base_url }}{{ still_sizes  }}{{ episode.still_path }}" class="card-img d-block  h-100" alt="Person Pictures">
+                <img src="{{ base_url }}{{ still_sizes  }}{{ episode.still_path }}" class="card-img d-block  h-100" alt="Person Pictures" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -39,7 +39,7 @@
                     {% for episode_credit in episode_credits  %}                    
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'person_detail' pk=episode_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ episode_credit.profile_path }}" class="card-img-top" alt="..."></a>
+                            <a href="{% url 'person_detail' pk=episode_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ episode_credit.profile_path }}" class="card-img-top" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <p class="card-text"><a href="{% url 'person_detail' pk=episode_credit.id %}">{{ episode_credit.name }}</a> ({{ episode_credit.character }})</p>
                             </div>
@@ -60,7 +60,7 @@
                     {% for guest in episode.guest_stars  %}                    
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'person_detail' pk=guest.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ guest.profile_path }}" class="card-img-top" alt="..."></a>
+                            <a href="{% url 'person_detail' pk=guest.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ guest.profile_path }}" class="card-img-top" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <p class="card-text"><a href="{% url 'person_detail' pk=guest.id %}">{{ guest.name }}</a> ({{ guest.character }})</p>
                             </div>
@@ -81,7 +81,7 @@
                     {% for image in episode_image  %}                    
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href=""><img src="{{ base_url }}{{ still_sizes }}{{ image.file_path }}" class="card-img-top" alt="..."></a>
+                            <a href=""><img src="{{ base_url }}{{ still_sizes }}{{ image.file_path }}" class="card-img-top" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             
                         </div>
                     </div>

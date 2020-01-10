@@ -13,7 +13,7 @@
             <div class="card mb-3 bg-transparent">
                 <div class="row no-gutters ">
                     <div class="col-md-2">
-                    <img src="{{ base_url }}{{ sizes }}{{ rel_path }}" class="card-img" alt="Movie Pictures">
+                    <img src="{{ base_url }}{{ sizes }}{{ rel_path }}" class="card-img" alt="Movie Pictures" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'">
                     </div>
                     <div class="col-md-8 " >
                         <div class="card-body  text-white" >
@@ -65,7 +65,7 @@
                     {% for created_by in tvserie.created_by   %}
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'person_detail' pk=created_by.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ created_by.profile_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <a href="{% url 'person_detail' pk=created_by.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ created_by.profile_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <a href="{% url 'person_detail' pk=created_by.id %}"><p class="card-text">{{ created_by.name}}</p></a>
                             </div>
@@ -86,7 +86,7 @@
                     {% for tvseries_credit in tvseries_credits  %}
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'person_detail' pk=tvseries_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ tvseries_credit.profile_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <a href="{% url 'person_detail' pk=tvseries_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ tvseries_credit.profile_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <a href="{% url 'person_detail' pk=tvseries_credit.id %}"><p class="card-text">{{ tvseries_credit.name }}</p></a>
                             </div>
@@ -107,7 +107,7 @@
                     {% for season in tvserie.seasons  %}
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'season_detail' pk=tvserie.id season_number=season.season_number%}"><img src="{{ base_url }}{{ sizes }}{{ season.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <a href="{% url 'season_detail' pk=tvserie.id season_number=season.season_number%}"><img src="{{ base_url }}{{ sizes }}{{ season.poster_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <a href="{% url 'season_detail' pk=tvserie.id season_number=season.season_number %}"><p class="card-text">{{ season.name }}({{ season.air_date }})</p></a>
                             </div>

@@ -14,7 +14,7 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-2">
-                <img src="{{ base_url }}{{ profile_sizes }}{{ person.profile_path }}" class="card-img" alt="Person Pictures">
+                <img src="{{ base_url }}{{ profile_sizes }}{{ person.profile_path }}" class="card-img" alt="Person Pictures" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -50,7 +50,7 @@
                     {% for movie_credit in movie_credits  %}                    
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'movie_detail' pk=movie_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ movie_credit.poster_path }}" class="card-img-top" alt="..."></a>
+                            <a href="{% url 'movie_detail' pk=movie_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ movie_credit.poster_path }}" class="card-img-top" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <p class="card-text"><a href="{% url 'movie_detail' pk=movie_credit.id %}">{{ movie_credit.original_title }}</a> ({{ movie_credit.character }})</p>
                             </div>

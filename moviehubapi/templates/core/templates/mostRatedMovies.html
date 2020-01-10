@@ -20,7 +20,7 @@
                         {% for discover_data in discover_datas %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'movie_detail' pk=discover_data.id %}"><img src="{{ base_url }}{{ sizes }}{{ discover_data.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'movie_detail' pk=discover_data.id %}"><img src="{{ base_url }}{{ sizes }}{{ discover_data.poster_path }}" class="card-img-top" alt="Actor Picture"  onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'movie_detail' pk=discover_data.id %}"><p class="card-text text-center">{{ discover_data.title }}({{ discover_data.release_date }})</p></a>
                                 </div>
@@ -45,7 +45,7 @@
                         {% for serie_data in serie_datas %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'tvserie_detail' pk=serie_data.id %}"><img src="{{ base_url }}{{ sizes }}{{ serie_data.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'tvserie_detail' pk=serie_data.id %}"><img src="{{ base_url }}{{ sizes }}{{ serie_data.poster_path }}" class="card-img-top" alt="Actor Picture"  onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'tvserie_detail' pk=serie_data.id %}"><p class="card-text text-center">{{ serie_data.name }}({{ serie_data.first_air_date }})</p></a>
                                 </div>

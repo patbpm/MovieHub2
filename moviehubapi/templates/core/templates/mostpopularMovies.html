@@ -21,7 +21,7 @@
                         {% for popular_movie in popular_movies %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'movie_detail' pk=popular_movie.id %}"><p class="card-text text-center">{{ popular_movie.title }}({{ popular_movie.release_date }})</p></a>
                                 </div>
@@ -46,7 +46,7 @@
                         {% for popular_serie in popular_series %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'tvserie_detail' pk=popular_serie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_serie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'tvserie_detail' pk=popular_serie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_serie.poster_path }}" class="card-img-top" alt="Actor Picture"  onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'tvserie_detail' pk=popular_serie.id %}"><p class="card-text text-center">{{ popular_serie.name }}({{ popular_serie.first_air_date }})</p></a>
                                 </div>
@@ -71,7 +71,7 @@
                     {% for popular_person in popular_persons %}
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'person_detail' pk=popular_person.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_person.profile_path }}" class="card-img-top" alt="Actor Picture"></a>
+                            <a href="{% url 'person_detail' pk=popular_person.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_person.profile_path }}" class="card-img-top" alt="Actor Picture"  onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <a href="{% url 'person_detail' pk=popular_person.id %}"><p class="card-text text-center">{{ popular_person.name }}</p></a>
                             </div>

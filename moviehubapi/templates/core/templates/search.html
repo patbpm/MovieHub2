@@ -15,7 +15,7 @@
                         {% if result.media_type == "movie" %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'movie_detail' pk=result.id %}"><img src="{{ base_url }}{{ sizes }}{{ result.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'movie_detail' pk=result.id %}"><img src="{{ base_url }}{{ sizes }}{{ result.poster_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'movie_detail' pk=result.id %}">{% if result.name %}<p>{{ result.name }}</p>{% else %}<p>{{ result.title }}</p>{% endif %}</a>
                                 </div>
@@ -37,7 +37,7 @@
                         {% if result.media_type == "tv" %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'tvserie_detail' pk=result.id %}"><img src="{{ base_url }}{{ sizes }}{{ result.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'tvserie_detail' pk=result.id %}"><img src="{{ base_url }}{{ sizes }}{{ result.poster_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'tvserie_detail' pk=result.id %}">{% if result.name %}<p>{{ result.name }}</p>{% else %}<p>{{ result.title }}</p>{% endif %}</a>
                                 </div>
@@ -59,7 +59,7 @@
                         {% if result.media_type == "person" %}
                         <div class="col-sm-2">
                             <div class="card" style="width: 10rem;">
-                                <a href="{% url 'person_detail' pk=result.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ result.profile_path }}" class="card-img-top" alt="Actor Picture"></a>
+                                <a href="{% url 'person_detail' pk=result.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ result.profile_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                                 <div class="card-body">
                                     <a href="{% url 'person_detail' pk=result.id %}">{% if result.name %}<p>{{ result.name }}</p>{% else %}<p>{{ result.title }}</p>{% endif %}</a>
                                 </div>

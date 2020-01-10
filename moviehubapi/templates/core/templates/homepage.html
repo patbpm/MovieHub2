@@ -11,7 +11,7 @@
             {% else %}
             <div class="carousel-item">
             {% endif %}
-                <a href="{% url 'movie_detail' pk=trending.id %}"><img src="{{ base_url }}{{ backdrop_sizes }}{{ trending.backdrop_path }}" class="d-block w-100 h-60" alt="..."></a>
+                <a href="{% url 'movie_detail' pk=trending.id %}"><img src="{{ base_url }}{{ backdrop_sizes }}{{ trending.backdrop_path }}" class="d-block w-100 h-60" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                 <div class="carousel-caption d-none d-md-block" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%,rgba(255, 255, 255, 0.6) 100%);">
                         {% if trending.title %}<h4>{{trending.title}}({{trending.media_type|capfirst}})</h4>{% else %}<h4>{{trending.name}}({{trending.media_type|upper}} Serie)</h4>{% endif %}
                     <p>{{trending.overview}}</p>
@@ -65,7 +65,7 @@
                 {% for rated_movie in rated_movies|slice:":6" %}
                 <div class="col-sm-2">
                     <div class="card" style="width: 10rem;">
-                        <a href="{% url 'movie_detail' pk=rated_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ rated_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                        <a href="{% url 'movie_detail' pk=rated_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ rated_movie.poster_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                         <div class="card-body">
                             <a href="{% url 'movie_detail' pk=rated_movie.id %}"><p class="card-text text-center">{{ rated_movie.title }}({{ rated_movie.release_date}})</p></a>
                         </div>
@@ -83,7 +83,7 @@
                 {% for popular_movie in popular_movies|slice:":6" %}
                 <div class="col-sm-2">
                     <div class="card" style="width: 10rem;">
-                        <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture"></a>
+                        <a href="{% url 'movie_detail' pk=popular_movie.id %}"><img src="{{ base_url }}{{ sizes }}{{ popular_movie.poster_path }}" class="card-img-top" alt="Actor Picture" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                         <div class="card-body">
                             <a href="{% url 'movie_detail' pk=popular_movie.id %}"><p class="card-text text-center">{{ popular_movie.title }}({{ popular_movie.release_date}})</p></a>
                         </div>

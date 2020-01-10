@@ -12,7 +12,7 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-2">
-                <img src="{{ base_url }}{{ sizes }}{{ season.poster_path }}" class="card-img" alt="Person Pictures">
+                <img src="{{ base_url }}{{ sizes }}{{ season.poster_path }}" class="card-img" alt="Person Pictures" onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -38,7 +38,7 @@
                     {% for season_credit in season_credits  %}                    
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href="{% url 'person_detail' pk=season_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ season_credit.profile_path }}" class="card-img-top" alt="..."></a>
+                            <a href="{% url 'person_detail' pk=season_credit.id %}"><img src="{{ base_url }}{{ profile_sizes }}{{ season_credit.profile_path }}" class="card-img-top" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <p class="card-text"><a href="{% url 'person_detail' pk=season_credit.id %}">{{ season_credit.name }}</a> ({{ season_credit.character }})</p>
                             </div>
@@ -59,7 +59,7 @@
                     {% for episode in season.episodes  %}                 
                     <div class="col-sm-2">
                         <div class="card" style="width: 10rem;">
-                            <a href=""><img src="{{ base_url }}{{ still_sizes }}{{ episode.still_path }}" class="card-img-top" alt="..."></a>
+                            <a href=""><img src="{{ base_url }}{{ still_sizes }}{{ episode.still_path }}" class="card-img-top" alt="..." onerror="this.src='https://dummyimage.com/600x900/ababab/ffffff.png&amp;text=+NO+IMAGE'"></a>
                             <div class="card-body">
                                 <p class="card-text">Episode {{ episode.episode_number }}<a href="">({{ episode.name }})</a> </p>
                             </div>
